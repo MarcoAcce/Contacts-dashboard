@@ -1,0 +1,27 @@
+import { Injectable, signal } from '@angular/core';
+
+@Injectable({ providedIn: 'root' })
+export class ThemeService {
+  private readonly STORAGE_KEY = 'theme';
+
+  isDark = signal(false);
+
+  constructor() {
+    const saved = localStorage.getItem(this.STORAGE_KEY);
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const dark = saved ? saved === 'dark' : prefersDark;
+    this.isDark.set(dark);
+    this.applyTheme(dark);
+  }
+
+  toggle(): void {
+    const dark = !this.isDark();
+    this.isDark.set(dark);
+    this.applyTheme(dark);
+    localStorage.setItem(this.STORAGE_KEY, dark ? 'dark' : 'light');
+  }
+
+  private applyTheme(dark: boolean): void {
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }
+}

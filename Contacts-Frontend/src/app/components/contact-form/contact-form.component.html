@@ -1,0 +1,38 @@
+<div class="form-overlay">
+    <div class="form-container">
+        <h3>{{ contact ? 'Edit Contact' : 'Add Contact' }}</h3>
+
+        <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" type="text" [(ngModel)]="form.name" name="name" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" [(ngModel)]="form.email" name="email" />
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input id="phone" type="tel" [(ngModel)]="form.phoneNumber" name="phoneNumber" />
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input id="address" type="text" [(ngModel)]="form.address" name="address" />
+            </div>
+            <div class="form-group">
+                <label for="birthday">Birthday</label>
+                <input id="birthday" type="date" [(ngModel)]="form.birthday" name="birthday" />
+            </div>
+
+            @if (validationError()) {
+                <p class="error">{{ validationError() }}</p>
+            }
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" (click)="cancel.emit()" class="btn btn-secondary">Cancel</button>
+            </div>
+        </form>
+        
+    </div>
+</div>

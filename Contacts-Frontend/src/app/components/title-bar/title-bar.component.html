@@ -1,0 +1,25 @@
+<header class="title-bar">
+
+    <a routerLink="/" class="home-btn">
+        <span class="icon icon-home" aria-hidden="true"></span>
+        Home
+    </a>
+
+    <span class="app-title">Contacts Manager</span>
+
+    <button 
+        (click)="theme.toggle()" 
+        class="btn btn-icon" 
+        [title]="theme.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+    >
+      <span class="icon" [class.icon-light]="theme.isDark()" [class.icon-dark]="!theme.isDark()" aria-hidden="true"></span>
+    </button>
+
+    @if (auth.isAuthenticated$ | async) {
+      <button (click)="logout()" class="btn btn-outline">Log Out</button>
+    } 
+    @else {
+      <button (click)="login()" class="btn btn-outline">Log In</button>
+    }
+
+</header>

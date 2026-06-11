@@ -1,0 +1,128 @@
+.contacts-container { 
+    max-width: 900px; 
+    margin: 0 auto; 
+    padding: 2rem; 
+}
+
+.contacts-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 2rem; 
+}
+
+.header-actions { 
+    display: flex; 
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.empty-state { 
+    text-align: center; 
+    font-size: 1.1rem; 
+    margin-top: 3rem; 
+}
+
+/* ── View toggle ────────────────────────────────────────── */
+.view-toggle {
+    display: flex;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.toggle-option {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    background: var(--color-bg-card);
+    transition: background 0.15s, color 0.15s;
+    user-select: none;
+}
+
+.toggle-option:first-child {
+    border-right: 1px solid var(--color-border);
+}
+
+.toggle-option input[type="radio"] {
+    display: none;
+}
+
+.toggle-option.active {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.toggle-option:not(.active) .icon {
+    color: var(--color-text);
+}
+
+.toggle-option:not(.active):hover {
+    background: var(--color-btn-secondary-bg);
+    color: var(--color-text);
+}
+
+/* ── Grid view ──────────────────────────────────────────── */
+.contacts-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 1rem; 
+}
+
+/* ── List view ──────────────────────────────────────────── */
+.contacts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    gap: 1rem;
+}
+
+.contact-row-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 1.5rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.contact-row-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    min-width: 120px;
+}
+
+.contact-row-detail {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-actions { 
+    margin-top: 0;
+    display: flex; 
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+/* Keep card-actions margin-top for grid cards only */
+.contact-card .card-actions {
+    margin-top: 1rem;
+}

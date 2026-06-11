@@ -1,0 +1,126 @@
+<div class="contacts-container">
+
+    <div class="contacts-header">
+
+      <h2>My Contacts</h2>
+
+      <div class="header-actions">
+
+        <div class="view-toggle">
+
+            <label 
+                class="toggle-option" 
+                [class.active]="viewMode() === 'grid'"
+            >
+                <input 
+                    type="radio" 
+                    name="viewMode" 
+                    value="grid" 
+                    [checked]="viewMode() === 'grid'" 
+                    (change)="viewMode.set('grid')" 
+                />
+                <span class="icon icon-grid" aria-hidden="true"></span>
+                Grid
+            </label>
+
+            <label 
+                class="toggle-option" 
+                [class.active]="viewMode() === 'list'"
+            >
+                <input 
+                    type="radio" 
+                    name="viewMode" 
+                    value="list" 
+                    [checked]="viewMode() === 'list'" 
+                    (change)="viewMode.set('list')" 
+                />
+                <span class="icon icon-list" aria-hidden="true"></span>
+                List
+            </label>
+
+        </div>
+        
+        <button (click)="openAddForm()" class="btn btn-primary">
+            + Add Contact
+        </button>
+      
+        </div>
+    
+    </div>
+
+    @if (showForm()) {
+      <app-contact-form
+        [contact]="editingContact()"
+        (save)="onSave($event)"
+        (cancel)="closeForm()"
+      />
+    }
+
+    @if (errorMessage()) {
+      <app-error-message
+        [message]="errorMessage()!"
+        (close)="dismissError()"
+      />
+    }
+
+    @if (contacts().length === 0 && !showForm()) {
+      <p class="empty-state">No contacts yet. Click "Add Contact" to get started.</p>
+    }
+
+    @if (viewMode() === 'grid') {
+        <div class="contacts-grid">
+            @for (contact of contacts(); track contact.id) {
+                <div class="contact-card">
+                    @if (contact.name) {
+                        <h3>{{ contact.name }}</h3>
+                    }
+                    @if (contact.email) {
+                        <p><strong>Email:</strong> {{ contact.email }}</p>
+                    }
+                    @if (contact.phoneNumber) {
+                        <p><strong>Phone:</strong> {{ contact.phoneNumber }}</p>
+                    }
+                    @if (contact.address) {
+                        <p><strong>Address:</strong> {{ contact.address }}</p>
+                    }
+                    @if (contact.birthday) {
+                        <p><strong>Birthday:</strong> {{ contact.birthday }}</p>
+                    }
+                    <div class="card-actions">
+                        <button 
+                            (click)="editContact(contact)" 
+                            class="btn btn-small"
+                        >
+                            Edit
+                        </button>
+                        <button 
+                            (click)="deleteContact(contact.id!)" 
+                            class="btn btn-small btn-danger"
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    } 
+    @else {
+        <div class="contacts-list">
+            @for (contact of contacts(); track contact.id) {
+                <div class="contact-row">
+                    <div class="contact-row-info">
+                        <span class="contact-row-name">{{ contact.name }}</span>
+                        <span class="contact-row-detail">{{ contact.email }}</span>
+                        <span class="contact-row-detail">{{ contact.phoneNumber }}</span>
+                        <span class="contact-row-detail">{{ contact.address }}</span>
+                        <span class="contact-row-detail">{{ contact.birthday }}</span>
+                    </div>
+                    <div class="card-actions">
+                        <button (click)="editContact(contact)" class="btn btn-small">Edit</button>
+                        <button (click)="deleteContact(contact.id!)" class="btn btn-small btn-danger">Delete</button>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

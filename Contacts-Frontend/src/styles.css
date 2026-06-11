@@ -1,0 +1,181 @@
+:root {
+  --color-primary:          #635dff;
+  --color-primary-hover:    #4a44cc;
+  --color-primary-light:    #f0efff;
+
+  /* Title bar */
+  --color-titlebar-bg:          #3b3699;
+  --color-titlebar-btn-border:  rgba(255, 255, 255, 0.5);
+  --color-titlebar-btn-hover:   rgba(255, 255, 255, 0.2);
+
+  /* Neutrals */
+  --color-white:            #ffffff;
+  --color-text:             #333333;
+  --color-text-muted:       #666666;
+  --color-text-empty:       #888888;
+
+  /* Backgrounds */
+  --color-bg:               #f5f5f5;
+  --color-bg-card:          #fafafa;
+  --color-bg-form:          #ffffff;
+
+  /* Borders & inputs */
+  --color-border:           #e0e0e0;
+  --color-border-input:     #cccccc;
+
+  /* Secondary button */
+  --color-btn-secondary-bg:    #e0e0e0;
+  --color-btn-secondary-hover: #cccccc;
+
+  /* Danger */
+  --color-danger:           #e74c3c;
+  --color-danger-hover:     #c0392b;
+
+  /* Misc */
+  --color-overlay:          rgba(0, 0, 0, 0.4);
+  --color-shadow:           rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] {
+  --color-primary:          #7b76ff;
+  --color-primary-hover:    #635dff;
+  --color-primary-light:    #2a2466;
+
+  --color-titlebar-bg:          #231e6b;
+  --color-titlebar-btn-border:  rgba(255, 255, 255, 0.4);
+  --color-titlebar-btn-hover:   rgba(255, 255, 255, 0.15);
+
+  --color-white:            #ffffff;
+  --color-text:             #e0e0e0;
+  --color-text-muted:       #aaaaaa;
+  --color-text-empty:       #777777;
+
+  --color-bg:               #121212;
+  --color-bg-card:          #1e1e2e;
+  --color-bg-form:          #1e1e2e;
+
+  --color-border:           #3a3a5c;
+  --color-border-input:     #4a4a6a;
+
+  --color-btn-secondary-bg:    #3a3a5c;
+  --color-btn-secondary-hover: #4a4a6a;
+
+  --color-danger:           #e74c3c;
+  --color-danger-hover:     #c0392b;
+
+  --color-overlay:          rgba(0, 0, 0, 0.6);
+  --color-shadow:           rgba(0, 0, 0, 0.4);
+}
+
+/* ── Global styles ──────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ── Global buttons ─────────────────────────────────────── */
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-primary { background-color: var(--color-primary); color: var(--color-white); }
+.btn-primary:hover { background-color: var(--color-primary-hover); }
+
+.btn-secondary { background-color: var(--color-btn-secondary-bg); color: var(--color-text); }
+.btn-secondary:hover { background-color: var(--color-btn-secondary-hover); }
+
+.btn-danger { background-color: var(--color-danger); color: var(--color-white); }
+.btn-danger:hover { background-color: var(--color-danger-hover); }
+
+.btn-small { padding: 0.3rem 0.7rem; font-size: 0.8rem; }
+
+/* ── Global card ────────────────────────────────────────── */
+.contact-card {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.2rem;
+  background: var(--color-bg-card);
+}
+.contact-card h3 { margin: 0 0 0.5rem 0; }
+.contact-card p  { margin: 0.3rem 0; font-size: 0.9rem; }
+
+/* ── Global form elements ───────────────────────────────── */
+.form-container {
+  background: var(--color-bg-form);
+}
+
+/* ── SVG Icons ──────────────────────────────────────────── */
+.icon {
+  display: inline-block;
+  background-color: currentColor;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.icon-home {
+  width: 18px;
+  height: 18px;
+  -webkit-mask: url('assets/icons/home.svg') no-repeat center / contain;
+  mask: url('assets/icons/home.svg') no-repeat center / contain;
+}
+
+.icon-light {
+  width: 20px;
+  height: 20px;
+  -webkit-mask: url('assets/icons/light.svg') no-repeat center / contain;
+  mask: url('assets/icons/light.svg') no-repeat center / contain;
+}
+
+.icon-dark {
+  width: 20px;
+  height: 20px;
+  -webkit-mask: url('assets/icons/dark.svg') no-repeat center / contain;
+  mask: url('assets/icons/dark.svg') no-repeat center / contain;
+}
+
+.icon-warning {
+  width: 72px;
+  height: 72px;
+  -webkit-mask: url('assets/icons/warning.svg') no-repeat center / contain;
+  mask: url('assets/icons/warning.svg') no-repeat center / contain;
+}
+
+.icon-grid {
+  width: 16px;
+  height: 16px;
+  -webkit-mask: url('assets/icons/grid.svg') no-repeat center / contain;
+  mask: url('assets/icons/grid.svg') no-repeat center / contain;
+}
+
+.icon-list {
+  width: 16px;
+  height: 16px;
+  -webkit-mask: url('assets/icons/list.svg') no-repeat center / contain;
+  mask: url('assets/icons/list.svg') no-repeat center / contain;
+}
+
+.form-group input {
+  border: 1px solid var(--color-border-input);
+  background-color: var(--color-bg-form);
+  color: var(--color-text);
+}
+
+.error { color: var(--color-danger); font-size: 0.85rem; margin-top: 0.5rem; }
+
+/* ── Global utility ─────────────────────────────────────── */
+.empty-state { color: var(--color-text-empty); }

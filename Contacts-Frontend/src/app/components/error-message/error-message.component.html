@@ -1,0 +1,21 @@
+<div class="error-overlay" (click)="close.emit()">
+
+    <div 
+        class="error-dialog" 
+        role="alertdialog" 
+        aria-modal="true" 
+        aria-labelledby="error-title" 
+        (click)="$event.stopPropagation()"
+    >
+        
+        <div class="error-icon">
+            <span class="icon icon-warning" aria-hidden="true"></span>
+        </div>
+
+        <h3 id="error-title">Something went wrong</h3>
+        <p class="error-body">{{ message }}</p>
+        
+        <button class="btn btn-primary" (click)="close.emit()">OK</button>
+    </div>
+
+</div>
